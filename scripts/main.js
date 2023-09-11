@@ -248,7 +248,7 @@ class Game {
 
   updateStagesAndScore() {
       $(".current").removeClass("current");
-      $(".stages button").eq(this.pLen).addClass("current");
+      $(".stages button").eq(this.pLen-1).addClass("current");
       $(".score").html("Score: " + this.amount);
   }
 
