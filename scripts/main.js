@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.stageLength = 1
     this.answeredQuestion = []
-    this.gameLength = $(".stages button").length
+    this.gameLength = $(".stages button").length - 1;
     this.pLen = this.gameLength
     this.amount = $(".stages button").eq(this.pLen-1).html()
     this.enableAskAudienceLifeline = true
@@ -87,9 +87,7 @@ class Game {
       this.displaySuccessMessage()
 
       this.pLen--;
-      $(".current").removeClass("current");
-      $(".stages button").eq(this.pLen).addClass("current");
-      $(".score").html("Score: " + this.amount)
+      this.updateStagesAndScore();
       this.gameLength++;
 
       setTimeout(() => {
@@ -248,27 +246,38 @@ class Game {
     })
   }
 
+  updateStagesAndScore() {
+      $(".current").removeClass("current");
+      $(".stages button").eq(this.pLen).addClass("current");
+      $(".score").html("Score: " + this.amount);
+  }
+
   resetGame() {
-    $(".modal").fadeOut()
-    $("#game").fadeOut()
+    $(".modal").fadeOut();
+    $("#game").fadeOut();
 
     setTimeout(
       function(){$(".welcome").fadeIn(600)}
-    ,1000)
+    ,1000);
 
-    this.enableCallFriendLifeline = true
-    this.enableAskAudienceLifeline = true
-    this.enableFiftyFiftyLifeline = true
+    this.enableCallFriendLifeline = true;
+    this.enableAskAudienceLifeline = true;
+    this.enableFiftyFiftyLifeline = true;
     this.stageLength = 1;
     this.answeredQuestion = [];
 
-    this.gameLength = $(".stages button").length
-    this.pLen = this.gameLength
+    this.gameLength = $(".stages button").length - 1;
+    this.pLen = this.gameLength;
     this.amount = $(".stages button").eq(this.pLen-1).html();
+    this.updateStagesAndScore();
         
     $("img:hover").css("background-color","rgb(250, 121, 0) !important")
-    $(".fifty").attr({"src":"images/fifty.png","onClick":"game.fifty()"}).css("cursor","pointer")
-    $(".callFriend").attr({"src":"images/call.png","onClick":"game.call_a_friend()"}).css("cursor","pointer")
+    $(".fifty").attr({"src":"images/fifty.png"});
+    $(".fifty").removeAttr("style");
+    $(".call").attr({"src":"images/call.png"});
+    $(".call").removeAttr("style");
+    $(".aud").attr({"src":"images/aud.png"});
+    $(".aud").removeAttr("style");
   }
 }
 
