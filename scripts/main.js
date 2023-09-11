@@ -4,7 +4,7 @@ class Game {
     this.answeredQuestion = []
     this.gameLength = $(".stages button").length - 1;
     this.pLen = this.gameLength
-    this.amount = $(".stages button").eq(this.pLen-1).html()
+    this.amount = $(".stages button").eq(this.pLen).html()
     this.enableAskAudienceLifeline = true
     this.enableCallFriendLifeline = true
     this.enableFiftyFiftyLifeline = true
@@ -268,7 +268,7 @@ class Game {
 
     this.gameLength = $(".stages button").length - 1;
     this.pLen = this.gameLength;
-    this.amount = $(".stages button").eq(this.pLen-1).html();
+    this.amount = $(".stages button").eq(this.pLen).html();
     this.updateStagesAndScore();
         
     $("img:hover").css("background-color","rgb(250, 121, 0) !important")
