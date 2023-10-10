@@ -35,9 +35,12 @@ class Game {
       })
 
       $(".opt").click((e) => {
-        this.selected = e.target.textContent.slice(0,1)
-        $(".modal").fadeIn(300);
-        $(".warning").fadeIn(300)
+        if (e.target.textContent.length > 2)
+        {
+          this.selected = e.target.textContent.slice(0,1)
+          $(".modal").fadeIn(300);
+          $(".warning").fadeIn(300)
+        }
       })
 
     this.answer = data["ans"]
